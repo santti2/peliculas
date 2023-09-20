@@ -1,24 +1,24 @@
-BEGIN TRANSACTION;
-DROP TABLE IF EXISTS "film";
-CREATE TABLE IF NOT EXISTS "film" (
-	"film_id"	int NOT NULL,
-	"title"	VARCHAR(255) NOT NULL,
-	"description"	BLOB SUB_TYPE TEXT DEFAULT NULL,
-	"release_year"	VARCHAR(4) DEFAULT NULL,
-	"language_id"	SMALLINT NOT NULL,
-	"original_language_id"	SMALLINT DEFAULT NULL,
-	"rental_duration"	SMALLINT NOT NULL DEFAULT 3,
-	"rental_rate"	DECIMAL(4, 2) NOT NULL DEFAULT 4.99,
-	"length"	SMALLINT DEFAULT NULL,
-	"replacement_cost"	DECIMAL(5, 2) NOT NULL DEFAULT 19.99,
-	"rating"	VARCHAR(10) DEFAULT 'G',
-	"special_features"	VARCHAR(100) DEFAULT NULL,
-	"last_update"	TIMESTAMP NOT NULL,
-	CONSTRAINT "CHECK_special_features" CHECK("special_features" IS null OR "special_features" LIKE '%Trailers%' OR "special_features" LIKE '%Commentaries%' OR "special_features" LIKE '%Deleted Scenes%' OR "special_features" LIKE '%Behind the Scenes%'),
-	PRIMARY KEY("film_id"),
-	CONSTRAINT "CHECK_special_rating" CHECK("rating" IN ('G', 'PG', 'PG-13', 'R', 'NC-17'))
+    BEGIN TRANSACTION;
+    DROP TABLE IF EXISTS "film";
+    CREATE TABLE IF NOT EXISTS "film" (
+        "film_id"	int NOT NULL,
+        "title"	VARCHAR(255) NOT NULL,
+        "description"	BLOB SUB_TYPE TEXT DEFAULT NULL,
+        "release_year"	VARCHAR(4) DEFAULT NULL,
+        "language_id"	SMALLINT NOT NULL,
+        "original_language_id"	SMALLINT DEFAULT NULL,
+        "rental_duration"	SMALLINT NOT NULL DEFAULT 3,
+        "rental_rate"	DECIMAL(4, 2) NOT NULL DEFAULT 4.99,
+        "length"	SMALLINT DEFAULT NULL,
+        "replacement_cost"	DECIMAL(5, 2) NOT NULL DEFAULT 19.99,
+        "rating"	VARCHAR(10) DEFAULT 'G',
+        "special_features"	VARCHAR(100) DEFAULT NULL,
+        "last_update"	TIMESTAMP NOT NULL,
+        CONSTRAINT "CHECK_special_features" CHECK("special_features" IS null OR "special_features" LIKE '%Trailers%' OR "special_features" LIKE '%Commentaries%' OR "special_features" LIKE '%Deleted Scenes%' OR "special_features" LIKE '%Behind the Scenes%'),
+        PRIMARY KEY("film_id"),
+        CONSTRAINT "CHECK_special_rating" CHECK("rating" IN ('G', 'PG', 'PG-13', 'R', 'NC-17'))
 
-);
+    );
 INSERT INTO "film" VALUES (1,'ACADEMY DINOSAUR','A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies','2006',1,NULL,6,0.99,86,20.99,'PG','Deleted Scenes,Behind the Scenes','2020-12-23 07:12:31');
 INSERT INTO "film" VALUES (2,'ACE GOLDFINGER','A Astounding Epistle of a Database Administrator And a Explorer who must Find a Car in Ancient China','2006',1,NULL,3,4.99,48,12.99,'G','Trailers,Deleted Scenes','2020-12-23 07:12:31');
 INSERT INTO "film" VALUES (3,'ADAPTATION HOLES','A Astounding Reflection of a Lumberjack And a Car who must Sink a Lumberjack in A Baloon Factory','2006',1,NULL,7,2.99,50,18.99,'NC-17','Trailers,Deleted Scenes','2020-12-23 07:12:31');
