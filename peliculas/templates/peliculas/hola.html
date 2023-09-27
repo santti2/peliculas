@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% block title %}peliculas{% endblock %}
+{% endblock %}
+
+{% block content %}
+  {% for post in posts %}
+    <article class="peliculas">
+      <header>
+        <div>
+          <h1>{{ post['title'] }}</h1>
+          <div class="about">by {{ peliculas['username'] }} on {{ peliculas['created'].strftime('%Y-%m-%d') }}</div>
+        </div>
+      </header>
+      <p class="body">{{ peliculas['body'] }}</p>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

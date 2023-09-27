@@ -29,4 +29,13 @@ def create_app(test_config=None):
     def Hello():
         return render_template('base.html')
 
+
+    from . import peliculas
+    app.register_blueprint(peliculas.bp)
+    app.add_url_rule('/', endpoint='index')
+    
+    from . import db
+    db.init_app(app)
+
+
     return app
