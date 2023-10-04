@@ -13,9 +13,9 @@ bp = Blueprint('peliculas', __name__)
 def index():
     db = get_db()
     peliculas = db.execute(
-        'SELECT f film_id, films'
+        'SELECT *'
         ' FROM film'
-        ' ORDER BY created DESC'
+        ' ORDER BY title '
     ).fetchall()
     return render_template('peliculas/hola.html', peliculas=peliculas)
 
@@ -27,5 +27,5 @@ def mostrarpelicula(id):
     pelicula = get_pelicula(id)
 
 
-    return render_template('templates/base.html', peliculas=pelicula)
+    return render_template('templates/detalle.html', peliculas=pelicula)
 
