@@ -4,7 +4,7 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
-from flaskr.auth import login_required
+#from flaskr.auth import login_required
 from flaskr.db import get_db
 
 bp = Blueprint('peliculas', __name__)
@@ -13,19 +13,19 @@ bp = Blueprint('peliculas', __name__)
 def index():
     db = get_db()
     peliculas = db.execute(
-        'SELECT *'
-        ' FROM film'
-        ' ORDER BY title '
+        """SELECT f.title AS titulo, l.name AS lenguaje
+         FROM film f JOIN language l ON f.language_id = l.language_id
+         ORDER BY f.film_id """
     ).fetchall()
     return render_template('peliculas/hola.html', peliculas=peliculas)
 
 def get_pelicula(id):
     return None
-
+##punto5
 @bp.route('/<int:id>/detalle', methods=['GET'])
 def mostrarpelicula(id):
     pelicula = get_pelicula(id)
 
 
-    return render_template('templates/detalle.html', peliculas=pelicula)
+    return render_template('templates/detalle.html', pelicula=pelicula)
 

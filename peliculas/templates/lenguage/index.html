@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% block title %}lenguaje{% endblock %}
+{% endblock %}
+
+{% block content %}
+  {% for lengu in lenguage %}
+    <article class="peliculas">
+      <header>
+        <div>
+          <h1>{{ lengu['name'] }}</h1>
+      </header>
+    </article>
+  {% endfor %}
+{% endblock %}
