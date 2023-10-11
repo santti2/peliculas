@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% block title %}actores{% endblock %}
+{% endblock %}
+
+{% block content %}
+  {% for act in actor %}
+    <article class="actor">
+      <header>
+        <div>
+          <h1>{{ act['name'] }}</h1>
+      </header>
+    </article>
+  {% endfor %}
+{% endblock %}

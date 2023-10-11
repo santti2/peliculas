@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <article class="detalle">
+      <header>
+        <div>
+          <div class="about">{{ pelicula['titulo'] }}</div>
+        </div>
+      </header>
+    </article>
+    {% for actor in actors %}
+    {% endfor %}
+{% endblock %}

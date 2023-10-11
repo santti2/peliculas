@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% block title %}categoria{% endblock %}
+{% endblock %}
+
+{% block content %}
+  {% for cate in category %}
+    <article class="category">
+      <header>
+        <div>
+          <h1>{{ cate['name'] }}</h1>
+      </header>
+    </article>
+  {% endfor %}
+{% endblock %}

@@ -19,7 +19,13 @@ def index():
     return render_template('lenguage/index.html', lenguage=lenguage)
 
 def get_language(id):
-    return None
+     lenguage = get_db().execute(
+        """SELECT *
+            FROM language
+            WHERE lenguage_id """
+    ).fetchone()
+     if lenguage is None:
+      abort(404, f"Post id {id} doesn't exist.")
 
 @bp.route('/<int:id>/detalle', methods=['GET'])
 def mostrarlenguage(id):
