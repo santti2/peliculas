@@ -5,8 +5,9 @@ from werkzeug.exceptions import abort
 
 #from flaskr.auth import login_required
 from peliculas.db import get_db
+from flaskr.auth import login_required
 
-bp = Blueprint('actor', __name__)
+bp = Blueprint('actor', __name__,url_prefix="/actor/")
 
 @bp.route('/')
 def index():
@@ -20,15 +21,17 @@ def index():
 
 def get_actor(id):
     actor = get_db().execute(
-        """SELECT *
-            FROM actor
-            WHERE actor_id = ? """,
-            (id,)
+    """ SELECT a.actor_id,a.first_name,a.last_name,c.name as categoria FROM film f 
+    JOIN film_category fc ON f.film_id = fc.film_id
+    JOIN category c ON fc.category_id = c.category_id
+    JOIN film_actor fa ON f.film_id = fa.film_id
+    JOIN actor a ON fa.actor_id = a.actor_id  
+    WHERE f.film_id = ?""",(id,)
     ).fetchone()
     if actor is None:
      abort(404, f"Post id {id} doesn't exist.")
 
-
+    return actor
 @bp.route('/<int:id>/detalle', methods=['GET'])
 def mostraractores(id):
     actor = get_actor(id)

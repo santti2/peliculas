@@ -34,6 +34,16 @@ def create_app(test_config=None):
     app.register_blueprint(peliculas.bp)
     app.add_url_rule('/', endpoint='index')
     
+
+    from . import lenguage
+    app.register_blueprint(lenguage.bp)
+
+    from . import category  
+    app.register_blueprint(category.bp)
+
+    from . import actor
+    app.register_blueprint(actor.bp)    
+
     from . import db
     db.init_app(app)
 
