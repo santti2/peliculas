@@ -1,16 +1,15 @@
 
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}------{% endblock %}</h1>
-{% endblock %}
 
 {% block content %}
+<h1 class="titulo">  🍿 PELICULAS 🍿</h1>
   {% for peli in peliculas %}
   <article class="post">
       <header>
         <div>
-          <h1>{{ peli['titulo'] }}({{peli ['release_year']}})</h1>
+          <a href="{{url_for ('peliculas.mostrardetalle', id =peli['film_id'])}}">
+          <h1>{{ peli['title'] }}({{peli ['release_year']}})</h1>
           <div class="about">{{ peli['lenguaje'] }}</div>
         </div>
       </header>

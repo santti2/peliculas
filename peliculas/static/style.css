@@ -1,0 +1,8 @@
+body{
+    background: linear-gradient(white, rgb(70, 4, 70));
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+}

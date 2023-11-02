@@ -1,14 +1,15 @@
-
-{% extends 'base.html' %}
-
+{%extends 'base.html'%} 
 {% block content %}
-  <article class="detalle">
-      <header>
-        <div>
-          <div class="about">{{ pelicula['titulo'] }}</div>
-        </div>
-      </header>
-    </article>
-    {% for actor in actors %}
-    {% endfor %}
-{% endblock %}
+<header>
+  <h1>Nombre: {{movie_info ['title']}}</h1>
+  <h1>Categoria: {{movie_info ['Categoria']}}</h1>
+    <h1>Lenguaje: {{movie_info ['lenguaje']}}</h1>
+    <h1>Año de lanzamiento: {{movie_info ['release_year']}}</h1>
+    <h1>Actores:</h1>
+    {% for actor in actor_info %}
+    <a href="{{url_for('actor.mostraractor',id = actor['actor_id'])}}">
+    <h1>{{actor['nombre']}} {{actor['apellido']}}</h1>
+  </a>
+    {%endfor%}
+</header>
+  {% endblock %}

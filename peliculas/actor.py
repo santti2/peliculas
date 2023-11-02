@@ -13,9 +13,9 @@ bp = Blueprint('actor', __name__,url_prefix="/actor/")
 def index():
     db = get_db()
     actor = db.execute(
-        """SELECT *
+        """SELECT first_name as nombre , last_name as apellido
             FROM actor
-            ORDER BY first_name, last_name """
+            ORDER BY nombre, apellido """
     ).fetchall()
     return render_template('actor/index.html', actor=actor)
 
@@ -33,7 +33,7 @@ def get_actor(id):
 
     return actor
 @bp.route('/<int:id>/detalle', methods=['GET'])
-def mostraractores(id):
+def mostraractor(id):
     actor = get_actor(id)
 
 

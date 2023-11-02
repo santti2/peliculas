@@ -6,7 +6,7 @@ from werkzeug.exceptions import abort
 #from flaskr.auth import login_required
 from peliculas.db import get_db
 
-bp = Blueprint('category', __name__, url_prefix="category")
+bp = Blueprint('category', __name__, url_prefix="/category/")
 
 @bp.route('/')
 def index():
