@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, redirect, jsonify, render_template, request, url_for
 )
 from werkzeug.exceptions import abort
 
@@ -16,7 +16,7 @@ def index():
             FROM category
             ORDER BY name ASC """
     ).fetchall()
-    return render_template('category/index.html', category=category)
+    return jsonify('category/index.html', category=category)
 
 def get_category(id):
     categoria = get_db().execute(
@@ -34,4 +34,4 @@ def mostrarcategoria(id):
     category = get_category(id)
 
 
-    return render_template('category/index.html', category=category)
+    return jsonify('category/index.html', category=category)

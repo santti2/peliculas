@@ -32,6 +32,7 @@ def create_app(test_config=None):
 
     from . import peliculas
     app.register_blueprint(peliculas.bp)
+    app.register_blueprint(peliculas.bpapi)
     app.add_url_rule('/', endpoint='index')
     
 
@@ -42,6 +43,7 @@ def create_app(test_config=None):
     app.register_blueprint(category.bp)
 
     from . import actor
+    app.register_blueprint(actor.bpapi)
     app.register_blueprint(actor.bp)    
 
     from . import db

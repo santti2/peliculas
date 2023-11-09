@@ -6,10 +6,12 @@
 
 {% endblock %}
 {% block content %}
-<p> Apariciones en peliculas </p>
-{% for peliculas in info_del_actor  %}
-    <a href="{{url_for ('peliculas.detalle', id =peliculas['film_id'])}}">
+<h1> Apariciones en peliculas </h1>
+<p>{{info_del_actor['first_name']}} {{info_del_actor['last_name']}}</p>
+{% for peliculas in apariciones  %}
+    <a href="{{url_for ('peliculas.mostrardetalle', id =peliculas['film_id'])}}">
     <p> {{peliculas['peli']}}</p>
     
     {% endfor %}
 {% endblock %}
+
